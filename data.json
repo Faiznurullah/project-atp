@@ -1,0 +1,25 @@
+{
+    "posts": [
+      {
+        "id": 1,
+        "title": "TITLE HEADING",
+        "date": "April 7, 2025",
+        "image": "images/woods.jpg",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lorem ipsum, ullamcorper nec sodales imperdiet, vestibulum et nulla. Nulla facilisi. Etiam id aliquam arcu. Etiam mollis elit at sem ullamcorper aliquet. Donec a orci blandit, lacinia quam vitae, tincidunt arcu. Fusce elementum turpis ut elit volutpat pretium. Vestibulum at dignissim mi, et dictum erat."
+      },
+      {
+        "id": 2,
+        "title": "TITLE HEADING",
+        "date": "May 12, 2025",
+        "image": "images/woods.jpg",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lorem ipsum, ullamcorper nec sodales imperdiet, vestibulum et nulla. Nulla facilisi. Etiam id aliquam arcu. Etiam mollis elit at sem ullamcorper aliquet. Donec a orci blandit, lacinia quam vitae, tincidunt arcu. Fusce elementum turpis ut elit volutpat pretium. Vestibulum at dignissim mi, et dictum erat."
+      },
+      {
+        "id": 3,
+        "title": "TITLE HEADING",
+        "date": "June 1, 2025",
+        "image": "images/fashion.jpg",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lorem ipsum, ullamcorper nec sodales imperdiet, vestibulum et nulla. Nulla facilisi. Etiam id aliquam arcu. Etiam mollis elit at sem ullamcorper aliquet. Donec a orci blandit, lacinia quam vitae, tincidunt arcu. Fusce elementum turpis ut elit volutpat pretium. Vestibulum at dignissim mi, et dictum erat."
+      }
+    ]
+  }
