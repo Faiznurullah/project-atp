@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile.css">
+    <title>Detail Post - MY BLOG</title>
+</head>
+
+<body>
+    <div class="detail-nav">
+        <button onclick="goBack()" class="back-button">← Back to Blog</button>
+    </div>
+    
+    <div class="detail-container">
+        <article class="post-detail" id="postDetail">
+            <div class="post-loading">Loading...</div>
+        </article>
+        
+        <aside class="sidebar">
+            <div class="grid-item image-card" id="box4">
+                <div class="tag">Recent Posts</div>
+                <div id="recentPosts">
+                    <div class="post-loading">Loading recent posts...</div>
+                </div>
+            </div>
+
+            <div class="grid-item image-card" id="box5">
+                <div class="tag">Tags</div>
+                <div class="tag-items">
+                    <button class="tag-button">Photos</button>
+                    <button class="tag-button">programming</button>
+                    <button class="tag-button">beauty</button>
+                    <button class="tag-button">blog</button>
+                    <button class="tag-button">tech</button>
+                    <button class="tag-button">trend</button>
+                    <button class="tag-button">world</button>
+                    <button class="tag-button">creative</button>
+                    <button class="tag-button">nature</button>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <footer class="footer">
+        <button class="previous-button" id="prevPost">Previous Post</button>
+        <button class="next-button" id="nextPost">Next Post</button>
+        <p class="footer-desc">Made by ❤ Jugesh Raghav</p>
+    </footer>
+
+    <script src="detail.js"></script>
+</body>
+
+</html>
