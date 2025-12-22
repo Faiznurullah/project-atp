@@ -16,6 +16,24 @@
         margin-bottom:2rem;
     }
 
+    .detail-container {
+        display: block;
+        padding: 1rem;
+        gap: 2rem;
+    }
+    
+    .post-detail {
+        padding: 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .post-title {
+        font-size: 2rem;
+    }
+    
+    .sidebar .grid-item:first-child {
+        display: none;
+    }
 }
 
 @media only screen and (max-width:600px) {
@@ -25,5 +43,30 @@
     #box5{
         display:none
     }
-
+    
+    .detail-nav {
+        padding: 1rem;
+    }
+    
+    .back-button {
+        padding: 0.6rem 1rem;
+        font-size: 14px;
+    }
+    
+    .post-title {
+        font-size: 1.8rem;
+    }
+    
+    .post-description {
+        font-size: 1rem;
+        padding: 0.8rem;
+    }
+    
+    .post-full-content p {
+        font-size: 1rem;
+    }
+    
+    .sidebar {
+        display: none;
+    }
 }
