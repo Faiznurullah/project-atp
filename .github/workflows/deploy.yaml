@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - master
+      - develop
   pull_request:
     branches:
       - main
@@ -33,19 +34,21 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
         
-    - name: Extract metadata
-      id: meta
-      uses: docker/metadata-action@v5
-      with:
-        images: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.DOCKER_IMAGE }}
-        tags: |
-          type=ref,event=branch
-          type=ref,event=pr
-          type=sha,prefix={{branch}}-
-          type=raw,value=latest,enable={{is_default_branch}}
-          type=semver,pattern={{version}}
-          type=semver,pattern={{major}}.{{minor}}
-          
+    - name: Generate tags
+      id: tags
+      run: |
+        REPO="${{ secrets.DOCKERHUB_USERNAME }}/${{ env.DOCKER_IMAGE }}"
+        COMMIT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
+        
+        if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+          echo "TAGS=${REPO}:pr-${{ github.event.number }}" >> $GITHUB_OUTPUT
+        elif [[ "${{ github.ref }}" == "refs/heads/main" ]] || [[ "${{ github.ref }}" == "refs/heads/master" ]]; then
+          echo "TAGS=${REPO}:latest,${REPO}:${COMMIT_SHA}" >> $GITHUB_OUTPUT
+        else
+          BRANCH_NAME=$(echo "${{ github.ref_name }}" | sed 's/[^a-zA-Z0-9]/-/g' | tr '[:upper:]' '[:lower:]')
+          echo "TAGS=${REPO}:${BRANCH_NAME},${REPO}:${BRANCH_NAME}-${COMMIT_SHA}" >> $GITHUB_OUTPUT
+        fi
+        
     - name: Build and push Docker image
       id: build
       uses: docker/build-push-action@v5
@@ -54,8 +57,7 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm64
         push: ${{ github.event_name != 'pull_request' }}
-        tags: ${{ steps.meta.outputs.tags }}
-        labels: ${{ steps.meta.outputs.labels }}
+        tags: ${{ steps.tags.outputs.TAGS }}
         cache-from: type=gha
         cache-to: type=gha,mode=max
         
