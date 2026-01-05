@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  personal-blog:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: personal-blog-container
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    volumes:
+      # Optional: Mount src directory for development (uncomment if needed)
+      # - ./src:/usr/share/nginx/html
+    environment:
+      - NGINX_ENVSUBST_TEMPLATE_DIR=/etc/nginx/templates
+      - NGINX_ENVSUBST_OUTPUT_DIR=/etc/nginx/conf.d
+    networks:
+      - blog-network
+    labels:
+      - "com.docker.compose.project=personal-blog"
+
+networks:
+  blog-network:
+    driver: bridge
+
+# Optional: Add volumes for persistent data if needed
+# volumes:
+#   blog-data:
